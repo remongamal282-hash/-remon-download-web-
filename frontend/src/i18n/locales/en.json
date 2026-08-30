@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "home": "Home",
+    "downloader": "Downloader",
+    "history": "History",
+    "favorites": "Favorites",
+    "scheduler": "Scheduler",
+    "settings": "Settings",
+    "desktop": "Desktop App",
+    "documentation": "Documentation",
+    "about": "About"
+  },
+  "home": {
+    "hero_title": "Download Any Video,",
+    "hero_title_accent": "Instantly.",
+    "hero_subtitle": "The fastest way to download videos from YouTube and hundreds of platforms. High quality, no limits.",
+    "url_placeholder": "Paste a video URL here...",
+    "analyze_button": "Analyze",
+    "supported_platforms": "Supported Platforms",
+    "features_title": "Why Remon Download?",
+    "feature_fast": "Lightning Fast",
+    "feature_fast_desc": "Async queue-based downloads — no browser blocking.",
+    "feature_quality": "Any Quality",
+    "feature_quality_desc": "Choose from 4K, 1080p, 720p, audio-only and more.",
+    "feature_scheduler": "Smart Scheduler",
+    "feature_scheduler_desc": "Schedule downloads to run automatically, even offline.",
+    "feature_history": "Full History",
+    "feature_history_desc": "Keep track of all your downloads with search and filter.",
+    "how_it_works": "How It Works",
+    "step1": "Paste the URL",
+    "step2": "Choose Quality",
+    "step3": "Download",
+    "desktop_promo_title": "Also Available as Desktop App",
+    "desktop_promo_desc": "Get the full Remon Download experience on Windows, macOS and Linux.",
+    "download_desktop": "Download Desktop App"
+  },
+  "downloader": {
+    "title": "Downloader",
+    "url_placeholder": "Paste a YouTube or video URL...",
+    "analyze": "Analyze",
+    "analyzing": "Analyzing...",
+    "video": "Video",
+    "audio": "Audio",
+    "quality": "Quality",
+    "format": "Format",
+    "download": "Download",
+    "channel": "Channel",
+    "duration": "Duration",
+    "queued": "Download queued.",
+    "download_failed": "Unable to queue download."
+  },
+  "metadata": {
+    "failed": "Metadata analysis failed.",
+    "video": "Video",
+    "playlist": "Playlist",
+    "unknown_channel": "Unknown channel",
+    "unknown_duration": "Duration unavailable"
+  },
+  "history": {
+    "title": "Download History",
+    "search": "Search history...",
+    "empty": "No download history yet.",
+    "redownload": "Re-download",
+    "delete": "Delete"
+  },
+  "favorites": {
+    "title": "Favorites",
+    "search": "Search favorites...",
+    "empty": "No favorites saved yet.",
+    "download": "Download",
+    "delete": "Remove"
+  },
+  "scheduler": {
+    "title": "Scheduler",
+    "empty": "No scheduled downloads.",
+    "create": "New Schedule",
+    "url": "Video URL",
+    "quality": "Quality",
+    "format": "Format",
+    "schedule_time": "Date & Time",
+    "enable": "Enable",
+    "delete": "Delete"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "default_quality": "Default Quality",
+    "default_format": "Default Format",
+    "notifications": "Notifications"
+  },
+  "desktop": {
+    "title": "Download Desktop App",
+    "subtitle": "Get Remon Download for your platform",
+    "windows": "Windows",
+    "macos": "macOS",
+    "linux": "Linux",
+    "download_button": "Download",
+    "version": "Version",
+    "size": "Size",
+    "released": "Released"
+  },
+  "documentation": {
+    "title": "Documentation"
+  },
+  "about": {
+    "title": "About Remon Download",
+    "subtitle": "A fast, open and beautiful video downloader for the web."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "back": "Back",
+    "next": "Next"
+  },
+  "auth": {
+    "login_title": "Welcome back",
+    "register_title": "Create your account",
+    "login": "Log in",
+    "register": "Register",
+    "logout": "Log out",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "no_account": "New to Remon Download?",
+    "have_account": "Already have an account?",
+    "invalid_credentials": "Invalid email or password.",
+    "registration_failed": "Unable to create account.",
+    "password_mismatch": "Passwords do not match."
+  },
+  "footer": {
+    "tagline": "Fast, free, and beautifully designed.",
+    "links": "Links",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  }
+}

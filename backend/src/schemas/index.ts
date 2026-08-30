@@ -1,0 +1,1 @@
+export { uuidParamSchema, paginationQuerySchema } from './common';

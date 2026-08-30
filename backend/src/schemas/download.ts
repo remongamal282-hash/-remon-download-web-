@@ -1,0 +1,3 @@
+export const createDownloadSchema = {
+  body: { type: 'object', additionalProperties: false, required: ['url', 'format', 'quality', 'outputFormat'], properties: { url: { type: 'string', minLength: 1, maxLength: 2048 }, format: { type: 'string', pattern: '^[0-9A-Za-z+./_-]{1,100}$' }, quality: { type: 'string', pattern: '^[0-9A-Za-z+./_-]{1,50}$' }, outputFormat: { type: 'string', enum: ['mp4', 'webm', 'mp3'] } } },
+} as const;

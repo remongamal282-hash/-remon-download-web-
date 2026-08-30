@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ========================================
+   Remon Download — Design System Tokens
+   ======================================== */
+@layer base {
+  :root {
+    /* Brand Colors */
+    --color-brand-green: #22c55e;
+    --color-brand-green-light: #4ade80;
+    --color-brand-green-dim: #16a34a;
+    --color-brand-green-muted: rgba(34, 197, 94, 0.12);
+    --color-brand-green-border: rgba(34, 197, 94, 0.2);
+    --color-brand-green-glow: rgba(34, 197, 94, 0.35);
+
+    /* Background layers */
+    --color-bg-base: #020817;
+    --color-bg-surface: #0d1526;
+    --color-bg-card: #111c32;
+    --color-bg-card-hover: #162340;
+    --color-bg-muted: #0a1120;
+
+    /* Text */
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: #94a3b8;
+    --color-text-muted: #475569;
+    --color-text-brand: #22c55e;
+
+    /* Borders */
+    --color-border: rgba(255, 255, 255, 0.06);
+    --color-border-brand: rgba(34, 197, 94, 0.2);
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html[dir="rtl"] {
+    font-family: 'IBM Plex Sans Arabic', 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    background-color: var(--color-bg-base);
+    min-height: 100vh;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-green-muted);
+    color: var(--color-brand-green-light);
+  }
+}
+
+/* ========================================
+   Custom Utility Classes
+   ======================================== */
+@layer utilities {
+  /* Glassmorphism card */
+  .glass-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-brand);
+    border-radius: 1rem;
+    backdrop-filter: blur(8px);
+    transition: background var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  }
+
+  .glass-card:hover {
+    background: var(--color-bg-card-hover);
+    border-color: var(--color-brand-green);
+    box-shadow: 0 0 24px var(--color-brand-green-glow);
+  }
+
+  /* Brand gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-brand-green-light) 0%, var(--color-brand-green) 50%, var(--color-brand-green-dim) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Neon green glow effect */
+  .glow-green {
+    box-shadow: 0 0 12px var(--color-brand-green-glow), 0 0 30px rgba(34, 197, 94, 0.15);
+  }
+
+  /* Primary button */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--color-brand-green) 0%, var(--color-brand-green-dim) 100%);
+    color: #000;
+    font-weight: 600;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.625rem;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 16px var(--color-brand-green-glow);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-ghost:hover {
+    background: var(--color-brand-green-muted);
+    border-color: var(--color-brand-green-border);
+    color: var(--color-text-primary);
+  }
+
+  /* Nav link */
+  .nav-link {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.5rem;
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-primary);
+    background: var(--color-brand-green-muted);
+  }
+
+  .nav-link.active {
+    color: var(--color-brand-green);
+    background: var(--color-brand-green-muted);
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 0;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-base);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-brand);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-green-dim);
+  }
+}

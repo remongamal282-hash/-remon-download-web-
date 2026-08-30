@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "downloader": "التحميل",
+    "history": "السجل",
+    "favorites": "المفضلة",
+    "scheduler": "الجدولة",
+    "settings": "الإعدادات",
+    "desktop": "تطبيق سطح المكتب",
+    "documentation": "التوثيق",
+    "about": "حول التطبيق"
+  },
+  "home": {
+    "hero_title": "حمّل أي فيديو،",
+    "hero_title_accent": "فوراً.",
+    "hero_subtitle": "أسرع طريقة لتحميل الفيديوهات من يوتيوب ومئات المنصات. جودة عالية، بلا قيود.",
+    "url_placeholder": "الصق رابط الفيديو هنا...",
+    "analyze_button": "تحليل",
+    "supported_platforms": "المنصات المدعومة",
+    "features_title": "لماذا Remon Download؟",
+    "feature_fast": "سرعة فائقة",
+    "feature_fast_desc": "تحميل غير متزامن قائم على قائمة انتظار — لا تجميد للمتصفح.",
+    "feature_quality": "أي جودة",
+    "feature_quality_desc": "اختر من 4K أو 1080p أو 720p أو صوت فقط والمزيد.",
+    "feature_scheduler": "جدولة ذكية",
+    "feature_scheduler_desc": "جدوِل التحميلات لتشغيلها تلقائيًا حتى دون اتصال.",
+    "feature_history": "سجل كامل",
+    "feature_history_desc": "تتبّع جميع تحميلاتك مع البحث والتصفية.",
+    "how_it_works": "كيف يعمل",
+    "step1": "الصق الرابط",
+    "step2": "اختر الجودة",
+    "step3": "حمّل",
+    "desktop_promo_title": "متاح أيضًا كتطبيق سطح مكتب",
+    "desktop_promo_desc": "احصل على تجربة Remon Download الكاملة على Windows وmacOS وLinux.",
+    "download_desktop": "تحميل تطبيق سطح المكتب"
+  },
+  "downloader": {
+    "title": "التحميل",
+    "url_placeholder": "الصق رابط يوتيوب أو أي فيديو...",
+    "analyze": "تحليل",
+    "analyzing": "جارٍ التحليل...",
+    "video": "فيديو",
+    "audio": "صوت",
+    "quality": "الجودة",
+    "format": "الصيغة",
+    "download": "تحميل",
+    "channel": "القناة",
+    "duration": "المدة",
+    "queued": "تمت إضافة التحميل إلى القائمة.",
+    "download_failed": "تعذر إضافة التحميل."
+  },
+  "metadata": {
+    "failed": "تعذر تحليل بيانات الفيديو.",
+    "video": "فيديو",
+    "playlist": "قائمة تشغيل",
+    "unknown_channel": "قناة غير معروفة",
+    "unknown_duration": "المدة غير متاحة"
+  },
+  "history": {
+    "title": "سجل التحميلات",
+    "search": "ابحث في السجل...",
+    "empty": "لا يوجد سجل تحميل بعد.",
+    "redownload": "إعادة التحميل",
+    "delete": "حذف"
+  },
+  "favorites": {
+    "title": "المفضلة",
+    "search": "ابحث في المفضلة...",
+    "empty": "لا توجد مفضلات محفوظة بعد.",
+    "download": "تحميل",
+    "delete": "إزالة"
+  },
+  "scheduler": {
+    "title": "الجدولة",
+    "empty": "لا توجد تحميلات مجدولة.",
+    "create": "جدولة جديدة",
+    "url": "رابط الفيديو",
+    "quality": "الجودة",
+    "format": "الصيغة",
+    "schedule_time": "التاريخ والوقت",
+    "enable": "تفعيل",
+    "delete": "حذف"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "language": "اللغة",
+    "theme": "المظهر",
+    "default_quality": "الجودة الافتراضية",
+    "default_format": "الصيغة الافتراضية",
+    "notifications": "الإشعارات"
+  },
+  "desktop": {
+    "title": "تحميل تطبيق سطح المكتب",
+    "subtitle": "احصل على Remon Download لمنصتك",
+    "windows": "ويندوز",
+    "macos": "ماك",
+    "linux": "لينكس",
+    "download_button": "تحميل",
+    "version": "الإصدار",
+    "size": "الحجم",
+    "released": "تاريخ الإصدار"
+  },
+  "documentation": {
+    "title": "التوثيق"
+  },
+  "about": {
+    "title": "حول Remon Download",
+    "subtitle": "محمّل فيديو سريع ومفتوح وجميل التصميم للويب."
+  },
+  "common": {
+    "loading": "جارٍ التحميل...",
+    "error": "حدث خطأ",
+    "retry": "إعادة المحاولة",
+    "cancel": "إلغاء",
+    "close": "إغلاق",
+    "save": "حفظ",
+    "back": "رجوع",
+    "next": "التالي"
+  },
+  "auth": {
+    "login_title": "مرحبًا بعودتك",
+    "register_title": "أنشئ حسابك",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "logout": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "no_account": "ليس لديك حساب؟",
+    "have_account": "لديك حساب بالفعل؟",
+    "invalid_credentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+    "registration_failed": "تعذر إنشاء الحساب.",
+    "password_mismatch": "كلمتا المرور غير متطابقتين."
+  },
+  "footer": {
+    "tagline": "سريع، مجاني، وتصميم رائع.",
+    "links": "روابط",
+    "legal": "قانوني",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة",
+    "contact": "تواصل معنا",
+    "rights": "جميع الحقوق محفوظة."
+  }
+}
