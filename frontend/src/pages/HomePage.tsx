@@ -11,6 +11,7 @@ import {
   CheckCircle2,
   Monitor,
 } from 'lucide-react';
+import { Seo } from '../components/Seo';
 
 export function HomePage() {
   const { t } = useTranslation();
@@ -29,8 +30,25 @@ export function HomePage() {
     { num: '03', key: 'step3' },
   ];
 
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'SaveIt',
+    url: import.meta.env.VITE_SITE_URL || window.location.origin,
+    description: t('home.hero_subtitle'),
+  };
+
   return (
-    <div>
+    <>
+      <Seo
+        title="SaveIt | Save videos and playlists"
+        description={t('home.hero_subtitle')}
+        path="/"
+        ogTitle="SaveIt"
+        ogDescription={t('home.hero_subtitle')}
+        structuredData={structuredData}
+      />
+      <div>
       {/* ── Hero ── */}
       <section className="relative overflow-hidden">
         {/* Background glow */}
@@ -71,30 +89,36 @@ export function HomePage() {
 
           {/* URL Input */}
           <div className="max-w-2xl mx-auto flex flex-col sm:flex-row gap-3">
-            <input
-              id="hero-url-input"
-              type="url"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              placeholder={t('home.url_placeholder')}
-              className="flex-1 px-4 py-3 rounded-xl text-sm outline-none transition-all"
-              style={{
-                background: 'var(--color-bg-card)',
-                border: '1px solid var(--color-border-brand)',
-                color: 'var(--color-text-primary)',
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-brand-green)';
-                e.currentTarget.style.boxShadow = '0 0 0 3px var(--color-brand-green-muted)';
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-border-brand)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            />
+            <div className="flex-1">
+              <label htmlFor="hero-url-input" className="sr-only">
+                {t('home.url_placeholder')}
+              </label>
+              <input
+                id="hero-url-input"
+                type="url"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                placeholder={t('home.url_placeholder')}
+                className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all focus-visible:ring-2 focus-visible:ring-emerald-500"
+                style={{
+                  background: 'var(--color-bg-card)',
+                  border: '1px solid var(--color-border-brand)',
+                  color: 'var(--color-text-primary)',
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--color-brand-green)';
+                  e.currentTarget.style.boxShadow = '0 0 0 3px var(--color-brand-green-muted)';
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--color-border-brand)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              />
+            </div>
             <Link
               to={`/downloader${url ? `?url=${encodeURIComponent(url)}` : ''}`}
               id="hero-analyze-btn"
+              aria-label={t('home.analyze_button')}
               className="btn-primary whitespace-nowrap"
             >
               <Download size={16} />
@@ -243,6 +267,7 @@ export function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

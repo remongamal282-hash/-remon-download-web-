@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Heart, Download, Trash2, Loader } from 'lucide-react';
 import type { FavoriteItem } from '../api/favorites';
 import { getFavorites, deleteFavorite, downloadFromFavorite } from '../api/favorites';
+import { Seo } from '../components/Seo';
 
 export function FavoritesPage() {
   const { t, i18n } = useTranslation();
@@ -66,7 +67,9 @@ export function FavoritesPage() {
   };
 
   return (
-    <div className="flex flex-col gap-6 p-6" dir={isRTL ? 'rtl' : 'ltr'}>
+    <>
+      <Seo title="SaveIt | Favorites" description="Your favorite downloads." path="/favorites" noindex />
+      <div className="flex flex-col gap-6 p-6" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="flex items-center gap-2">
         <Heart className="h-6 w-6 text-red-500" />
         <h1 className="text-3xl font-bold">{t('favorites.title')}</h1>
@@ -120,7 +123,8 @@ export function FavoritesPage() {
           </button>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }
 

@@ -7,7 +7,11 @@ import { DownloadService } from '../services/downloadService';
 export async function downloadRoutes(fastify: FastifyInstance, options: { downloadService: DownloadService }): Promise<void> {
   const controller = createDownloadController(options.downloadService);
   const protectedRoute = { preHandler: requireAuth };
-  fastify.post('/downloads', { ...protectedRoute, schema: createDownloadSchema }, controller.create);
+  fastify.post('/downloads', {
+    ...protectedRoute,
+    schema: createDownloadSchema,
+    config: { rateLimit: { max: 12, timeWindow: '1 minute' } },
+  }, controller.create);
   fastify.get('/downloads', protectedRoute, controller.list);
   fastify.get('/downloads/:id', protectedRoute, controller.get);
   fastify.post('/downloads/:id/pause', protectedRoute, controller.pause);

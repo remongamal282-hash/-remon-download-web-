@@ -17,7 +17,7 @@
     "url_placeholder": "Paste a video URL here...",
     "analyze_button": "Analyze",
     "supported_platforms": "Supported Platforms",
-    "features_title": "Why Remon Download?",
+    "features_title": "Why SaveIt?",
     "feature_fast": "Lightning Fast",
     "feature_fast_desc": "Async queue-based downloads — no browser blocking.",
     "feature_quality": "Any Quality",
@@ -31,7 +31,7 @@
     "step2": "Choose Quality",
     "step3": "Download",
     "desktop_promo_title": "Also Available as Desktop App",
-    "desktop_promo_desc": "Get the full Remon Download experience on Windows, macOS and Linux.",
+    "desktop_promo_desc": "Get the full SaveIt experience on Windows, macOS and Linux.",
     "download_desktop": "Download Desktop App"
   },
   "downloader": {
@@ -91,7 +91,7 @@
   },
   "desktop": {
     "title": "Download Desktop App",
-    "subtitle": "Get Remon Download for your platform",
+    "subtitle": "Get SaveIt for your platform",
     "windows": "Windows",
     "macos": "macOS",
     "linux": "Linux",
@@ -104,7 +104,7 @@
     "title": "Documentation"
   },
   "about": {
-    "title": "About Remon Download",
+    "title": "About SaveIt",
     "subtitle": "A fast, open and beautiful video downloader for the web."
   },
   "common": {
@@ -126,7 +126,7 @@
     "email": "Email",
     "password": "Password",
     "confirm_password": "Confirm password",
-    "no_account": "New to Remon Download?",
+    "no_account": "New to SaveIt?",
     "have_account": "Already have an account?",
     "invalid_credentials": "Invalid email or password.",
     "registration_failed": "Unable to create account.",

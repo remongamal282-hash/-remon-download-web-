@@ -7,6 +7,7 @@ import { useAuthStore } from '../stores/useAuthStore';
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
 import { ProtectedRoute } from '../components/ProtectedRoute';
+import { NotFoundPage } from '../pages/NotFoundPage';
 
 // Lazy-load pages for code splitting
 const HomePage = lazy(() => import('../pages/HomePage').then((m) => ({ default: m.HomePage })));
@@ -52,16 +53,17 @@ export function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/" element={<HomePage />} />
+            <Route path="/desktop" element={<DesktopPage />} />
+            <Route path="/documentation" element={<DocumentationPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/downloader" element={<DownloaderPage />} />
               <Route path="/history" element={<HistoryPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
               <Route path="/scheduler" element={<SchedulerPage />} />
               <Route path="/settings" element={<SettingsPage />} />
-              <Route path="/desktop" element={<DesktopPage />} />
-              <Route path="/documentation" element={<DocumentationPage />} />
-              <Route path="/about" element={<AboutPage />} />
             </Route>
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </MainLayout>

@@ -11,6 +11,10 @@ import { HistoryService } from '../services/historyService';
 import { historyRoutes } from './history';
 import { FavoritesService } from '../services/favoritesService';
 import { favoritesRoutes } from './favorites';
+import { SettingsService } from '../services/settingsService';
+import { settingsRoutes } from './settings';
+import { SchedulerService } from '../services/schedulerService';
+import { schedulerRoutes } from './scheduler';
 
 export interface RouteDependencies {
   healthService: HealthService;
@@ -19,6 +23,8 @@ export interface RouteDependencies {
   downloadService: DownloadService;
   historyService: HistoryService;
   favoritesService: FavoritesService;
+  settingsService: SettingsService;
+  schedulerService: SchedulerService;
 }
 
 export async function registerRoutes(
@@ -34,4 +40,6 @@ export async function registerRoutes(
   await fastify.register(downloadRoutes, { prefix: '/api', downloadService: dependencies.downloadService });
   await fastify.register(historyRoutes, { prefix: '/api', historyService: dependencies.historyService });
   await fastify.register(favoritesRoutes, { prefix: '/api', favoritesService: dependencies.favoritesService });
+  await fastify.register(settingsRoutes, { prefix: '/api', settingsService: dependencies.settingsService });
+  await fastify.register(schedulerRoutes, { prefix: '/api', schedulerService: dependencies.schedulerService });
 }

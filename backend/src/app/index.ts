@@ -15,6 +15,8 @@ import { YouTubeMetadataProvider } from '../services/youtubeMetadataProvider';
 import { DownloadService } from '../services/downloadService';
 import { HistoryService } from '../services/historyService';
 import { FavoritesService } from '../services/favoritesService';
+import { SettingsService } from '../services/settingsService';
+import { SchedulerService } from '../services/schedulerService';
 
 export interface AppOptions {
   databaseHealthCheck?: () => Promise<boolean>;
@@ -23,6 +25,8 @@ export interface AppOptions {
   downloadService?: DownloadService;
   historyService?: HistoryService;
   favoritesService?: FavoritesService;
+  settingsService?: SettingsService;
+  schedulerService?: SchedulerService;
 }
 
 export async function buildApp(options: AppOptions = {}): Promise<FastifyInstance> {
@@ -31,6 +35,14 @@ export async function buildApp(options: AppOptions = {}): Promise<FastifyInstanc
     logger: {
       level: config.isProduction ? 'info' : 'debug',
     },
+  });
+
+  fastify.addHook('onRequest', async (_request, reply) => {
+    reply.header('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' http://localhost:3000 http://127.0.0.1:3000 http://localhost:5173; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self';");
+    reply.header('X-Content-Type-Options', 'nosniff');
+    reply.header('Referrer-Policy', 'strict-origin-when-cross-origin');
+    reply.header('X-Frame-Options', 'DENY');
+    reply.header('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
   });
 
   // Setup CORS
@@ -46,9 +58,13 @@ export async function buildApp(options: AppOptions = {}): Promise<FastifyInstanc
   const downloadService = options.downloadService || new DownloadService();
   const historyService = options.historyService || new HistoryService();
   const favoritesService = options.favoritesService || new FavoritesService();
+  const settingsService = options.settingsService || new SettingsService();
+  const schedulerService = options.schedulerService || new SchedulerService();
   fastify.decorate('authService', authService);
   fastify.decorate('metadataService', metadataService);
   fastify.decorate('downloadService', downloadService);
+  fastify.decorate('settingsService', settingsService);
+  fastify.decorate('schedulerService', schedulerService);
 
   registerErrorHandler(fastify);
   registerNotFoundHandler(fastify);
@@ -59,6 +75,8 @@ export async function buildApp(options: AppOptions = {}): Promise<FastifyInstanc
     downloadService,
     historyService,
     favoritesService,
+    settingsService,
+    schedulerService,
   });
 
   fastify.addHook('onClose', async () => {

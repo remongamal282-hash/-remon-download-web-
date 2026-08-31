@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { History, Download, Trash2, Loader } from 'lucide-react';
 import type { HistoryItem } from '../api/history';
 import { getHistory, deleteHistoryItem, redownloadFromHistory } from '../api/history';
+import { Seo } from '../components/Seo';
 
 export function HistoryPage() {
   const { t, i18n } = useTranslation();
@@ -82,7 +83,9 @@ export function HistoryPage() {
   };
 
   return (
-    <div className="flex flex-col gap-6 p-6" dir={isRTL ? 'rtl' : 'ltr'}>
+    <>
+      <Seo title="SaveIt | History" description="Your saved download history." path="/history" noindex />
+      <div className="flex flex-col gap-6 p-6" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="flex items-center gap-2">
         <History className="h-6 w-6" />
         <h1 className="text-3xl font-bold">{t('history.title')}</h1>
@@ -159,7 +162,8 @@ export function HistoryPage() {
           </button>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }
 

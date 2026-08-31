@@ -21,13 +21,16 @@ export interface Config {
   downloadTimeoutMs: number;
 }
 
+const isProduction = process.env.NODE_ENV === 'production';
+const providedAuthSecret = process.env.AUTH_SECRET;
+
 export const config: Config = {
   port: parseInt(process.env.PORT || '3000', 10),
   host: process.env.HOST || '0.0.0.0',
   databaseUrl: process.env.DATABASE_URL || '',
   corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:5173',
-  isProduction: process.env.NODE_ENV === 'production',
-  authSecret: process.env.AUTH_SECRET || 'development-only-change-me',
+  isProduction,
+  authSecret: providedAuthSecret || (isProduction ? '' : 'development-only-change-me'),
   ytDlpPath: resolveRuntimePath({ envPath: process.env.YTDLP_PATH, resourcesPath: Reflect.get(process, 'resourcesPath'), projectRuntimeDirectory: path.resolve(__dirname, '../../runtime'), fileName: process.platform === 'win32' ? 'yt-dlp.exe' : 'yt-dlp', pathFallback: 'yt-dlp' }),
   ffmpegPath: resolveRuntimePath({ envPath: process.env.FFMPEG_PATH, resourcesPath: Reflect.get(process, 'resourcesPath'), projectRuntimeDirectory: path.resolve(__dirname, '../../runtime'), fileName: process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg', pathFallback: 'ffmpeg' }),
   downloadDirectory: process.env.DOWNLOAD_DIRECTORY || path.join(process.env.LOCALAPPDATA || process.env.HOME || process.cwd(), 'Remon Download', 'downloads'),
@@ -39,4 +42,8 @@ export const config: Config = {
 
 if (!config.databaseUrl) {
   throw new Error('DATABASE_URL is required. Set it in backend/.env before starting the backend.');
+}
+
+if (config.isProduction && (!providedAuthSecret || providedAuthSecret === 'development-only-change-me')) {
+  throw new Error('AUTH_SECRET must be set to a strong secret in production.');
 }

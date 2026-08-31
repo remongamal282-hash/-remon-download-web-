@@ -21,7 +21,7 @@ i18n
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
-      lookupLocalStorage: 'remon-language',
+      lookupLocalStorage: 'saveit-language',
     },
   });
 

@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 import i18n, { applyDirection } from '../i18n';
 
 export type Language = 'en' | 'ar';
-export type Theme = 'dark'; // Light theme may be added in a future phase
+export type Theme = 'light' | 'dark' | 'system';
 
 interface SettingsState {
   language: Language;
@@ -16,7 +16,7 @@ export const useSettingsStore = create<SettingsState>()(
   persist(
     (set) => ({
       language: 'en',
-      theme: 'dark',
+      theme: 'light',
 
       setLanguage: (lang: Language) => {
         i18n.changeLanguage(lang);
@@ -29,7 +29,7 @@ export const useSettingsStore = create<SettingsState>()(
       },
     }),
     {
-      name: 'remon-settings',
+      name: 'saveit-settings',
     }
   )
 );

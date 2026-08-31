@@ -6,6 +6,7 @@ import { Download } from 'lucide-react';
 import { analyzeUrl } from '../api/metadata';
 import type { MetadataResult } from '../api/metadata';
 import { createDownload } from '../api/downloads';
+import { Seo } from '../components/Seo';
 
 export function DownloaderPage() {
   const { t } = useTranslation();
@@ -19,7 +20,12 @@ export function DownloaderPage() {
   async function submitUrl(value: string) { setLoading(true); setError(''); try { setMetadata(await analyzeUrl(value)); } catch { setMetadata(null); setError(t('metadata.failed')); } finally { setLoading(false); } }
   function submit(event: FormEvent) { event.preventDefault(); void submitUrl(url); }
   async function queueDownload(format: string, quality: string) { setDownloadMessage(''); try { await createDownload({ url, format, quality, outputFormat: 'mp4' }); setDownloadMessage(t('downloader.queued')); } catch { setDownloadMessage(t('downloader.download_failed')); } }
-  return <section className="max-w-4xl mx-auto px-4 py-12"><div className="flex items-center gap-3 mb-8"><Download style={{ color: 'var(--color-brand-green)' }} /><h1 className="text-3xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{t('downloader.title')}</h1></div><form onSubmit={submit} className="flex flex-col sm:flex-row gap-3 mb-8"><input required type="url" value={url} onChange={(event) => setUrl(event.target.value)} placeholder={t('downloader.url_placeholder')} className="flex-1 px-4 py-3 rounded-xl" style={{ background: 'var(--color-bg-card)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border-brand)' }} /><button className="btn-primary justify-center" disabled={loading}>{loading ? t('downloader.analyzing') : t('downloader.analyze')}</button></form>{error && <p role="alert" className="text-red-400 mb-6">{error}</p>}{downloadMessage && <p className="mb-6" style={{ color: 'var(--color-brand-green)' }}>{downloadMessage}</p>}{metadata && <MetadataCard metadata={metadata} onDownload={queueDownload} />}</section>;
+  return (
+    <>
+      <Seo title="SaveIt | Downloader" description="Analyze and save YouTube videos, Shorts, and playlists with SaveIt." path="/downloader" noindex />
+      <section className="max-w-4xl mx-auto px-4 py-12"><div className="flex items-center gap-3 mb-8"><Download style={{ color: 'var(--color-brand-green)' }} /><h1 className="text-3xl font-bold" style={{ color: 'var(--color-text-primary)' }}>{t('downloader.title')}</h1></div><form onSubmit={submit} className="flex flex-col sm:flex-row gap-3 mb-8"><input required type="url" value={url} onChange={(event) => setUrl(event.target.value)} placeholder={t('downloader.url_placeholder')} className="flex-1 px-4 py-3 rounded-xl" style={{ background: 'var(--color-bg-card)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border-brand)' }} /><button className="btn-primary justify-center" disabled={loading}>{loading ? t('downloader.analyzing') : t('downloader.analyze')}</button></form>{error && <p role="alert" className="text-red-400 mb-6">{error}</p>}{downloadMessage && <p className="mb-6" style={{ color: 'var(--color-brand-green)' }}>{downloadMessage}</p>}{metadata && <MetadataCard metadata={metadata} onDownload={queueDownload} />}</section>
+    </>
+  );
 }
 
 function MetadataCard({ metadata, onDownload }: { metadata: MetadataResult; onDownload: (format: string, quality: string) => Promise<void> }) {

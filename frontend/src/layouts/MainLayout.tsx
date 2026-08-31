@@ -43,8 +43,8 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
       {/* ── Header ── */}
       <header
         style={{
-          backgroundColor: 'rgba(2, 8, 23, 0.85)',
-          borderBottom: '1px solid var(--color-border-brand)',
+          backgroundColor: 'rgba(255, 255, 255, 0.82)',
+          borderBottom: '1px solid var(--color-border)',
           backdropFilter: 'blur(12px)',
         }}
         className="sticky top-0 z-50"
@@ -66,8 +66,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
                 className="font-bold text-base tracking-tight"
                 style={{ color: 'var(--color-text-primary)' }}
               >
-                Remon{' '}
-                <span style={{ color: 'var(--color-brand-green)' }}>Download</span>
+                Save<span style={{ color: 'var(--color-brand-green)' }}>It</span>
               </span>
             </Link>
 
@@ -168,7 +167,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
                   className="font-bold text-sm"
                   style={{ color: 'var(--color-text-primary)' }}
                 >
-                  Remon <span style={{ color: 'var(--color-brand-green)' }}>Download</span>
+                  Save<span style={{ color: 'var(--color-brand-green)' }}>It</span>
                 </span>
               </div>
               <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
@@ -234,7 +233,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
 
           <hr className="divider my-6" />
           <p className="text-center text-xs" style={{ color: 'var(--color-text-muted)' }}>
-            © {new Date().getFullYear()} Remon Download. {t('footer.rights')}
+            © {new Date().getFullYear()} SaveIt. {t('footer.rights')}
           </p>
         </div>
       </footer>
