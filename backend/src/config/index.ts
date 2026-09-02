@@ -19,6 +19,7 @@ export interface Config {
   downloadDirectory: string;
   downloadMaxConcurrent: number;
   downloadTimeoutMs: number;
+  trustProxy: boolean | string;
 }
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -38,6 +39,7 @@ export const config: Config = {
   downloadTimeoutMs: parseInt(process.env.DOWNLOAD_TIMEOUT_MS || '3600000', 10),
   metadataTimeoutMs: parseInt(process.env.METADATA_TIMEOUT_MS || '30000', 10),
   metadataMaxConcurrent: parseInt(process.env.METADATA_MAX_CONCURRENT || '2', 10),
+  trustProxy: isProduction,
 };
 
 if (!config.databaseUrl) {

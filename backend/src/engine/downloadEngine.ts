@@ -9,6 +9,7 @@ export interface DownloadEngineResult { filePath: string; fileSize: number; }
 
 export class DownloadEngine {
   private readonly active = new Map<string, ProcessHandle>();
+
   async start(record: DownloadRecord, hooks: DownloadEngineHooks): Promise<DownloadEngineResult> {
     await mkdir(config.downloadDirectory, { recursive: true });
     const safeName = record.id;
@@ -34,9 +35,39 @@ export class DownloadEngine {
     }
     finally { this.active.delete(record.id); }
   }
+
   pause(id: string): void { this.active.get(id)?.process.kill('SIGSTOP'); }
   resume(id: string): void { this.active.get(id)?.process.kill('SIGCONT'); }
   stop(id: string): void { this.active.get(id)?.process.kill('SIGTERM'); }
   cancel(id: string): void { this.stop(id); }
-  async cleanup(id: string): Promise<void> { await rm(path.join(config.downloadDirectory, `${id}.part`), { force: true }); }
+
+  async cleanup(id: string): Promise<void> {
+    await rm(path.join(config.downloadDirectory, `${id}.part`), { force: true });
+    // Also clean up .ytdl metadata files
+    await rm(path.join(config.downloadDirectory, `${id}.ytdl`), { force: true });
+  }
+
+  // Startup cleanup: scan for orphan .part files from crashed/terminated downloads
+  async cleanupOrphanFiles(): Promise<void> {
+    try {
+      await mkdir(config.downloadDirectory, { recursive: true });
+      const files = await readdir(config.downloadDirectory);
+      const orphanParts = files.filter(f => f.endsWith('.part') || f.endsWith('.ytdl'));
+
+      for (const file of orphanParts) {
+        try {
+          await rm(path.join(config.downloadDirectory, file), { force: true });
+        } catch (error) {
+          // Ignore individual file cleanup errors, log but continue
+          console.warn(`Could not clean up orphan file ${file}: ${error instanceof Error ? error.message : String(error)}`);
+        }
+      }
+
+      if (orphanParts.length > 0) {
+        console.log(`Cleaned up ${orphanParts.length} orphan temporary files on startup`);
+      }
+    } catch (error) {
+      console.warn(`Error during orphan file cleanup: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  }
 }
