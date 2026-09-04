@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import path from 'path';
 import { resolveRuntimePath } from './runtimePaths';
+import { parseTrustProxy } from './trustProxy';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -19,7 +20,7 @@ export interface Config {
   downloadDirectory: string;
   downloadMaxConcurrent: number;
   downloadTimeoutMs: number;
-  trustProxy: boolean | string;
+  trustProxy: boolean | string | string[];
 }
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -39,7 +40,7 @@ export const config: Config = {
   downloadTimeoutMs: parseInt(process.env.DOWNLOAD_TIMEOUT_MS || '3600000', 10),
   metadataTimeoutMs: parseInt(process.env.METADATA_TIMEOUT_MS || '30000', 10),
   metadataMaxConcurrent: parseInt(process.env.METADATA_MAX_CONCURRENT || '2', 10),
-  trustProxy: isProduction,
+  trustProxy: parseTrustProxy(process.env.TRUST_PROXY),
 };
 
 if (!config.databaseUrl) {

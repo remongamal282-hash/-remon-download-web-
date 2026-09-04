@@ -13,7 +13,6 @@ This document provides step-by-step instructions for deploying SaveIt Web to a p
 - **Operating System**: Linux (Debian/Ubuntu), macOS, or Windows Server 2019+
 - **yt-dlp**: Latest version (for download engine)
 - **FFmpeg**: Latest version with libmp3lame support (for audio/video processing)
-- **FFprobe**: Latest version (for media analysis)
 
 ### Hardware Recommendations
 
@@ -43,13 +42,12 @@ HOST=0.0.0.0
 # Required: CORS and Frontend Origin
 CORS_ORIGIN=https://yourdomain.com
 
-# Optional: Reverse Proxy Support (set to true if behind Nginx/Caddy/etc)
+# Optional: Reverse Proxy Support (true, false, or comma-separated proxy IP/CIDR values)
 TRUST_PROXY=true
 
 # Optional: Runtime Tools Paths (defaults to PATH if not specified)
 YTDLP_PATH=/usr/bin/yt-dlp
 FFMPEG_PATH=/usr/bin/ffmpeg
-FFPROBE_PATH=/usr/bin/ffprobe
 
 # Optional: Download Configuration
 DOWNLOAD_DIRECTORY=/var/lib/remon-download/media
